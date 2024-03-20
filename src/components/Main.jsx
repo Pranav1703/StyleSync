@@ -2,11 +2,28 @@ import React from 'react'
 import "../styles/main.css"
 import { useState } from 'react';
 import Card from './Card';
+// import { ChakraProvider } from '@chakra-ui/react';
+// import {
+//     Slider,
+//     SliderTrack,
+//     SliderFilledTrack,
+//     SliderThumb,
+//   } from '@chakra-ui/react'
+
+import { Slider } from '@mui/base/Slider';
+
+
+
+
 
 const Main = () => {
 
   const [file, setFile] = useState();
 //   const [clothes,setClothes] = useState()
+  const [imageVal,setImageVal] = useState(0)
+  const [steps,setSteps] = useState(0)
+  const [scale,setScale] = useState(0)
+  const [seed,setSeed] = useState(0)
 
   function fileChangeHandler(e) {
       console.log(e.target.files);
@@ -79,9 +96,58 @@ const Main = () => {
                 </a>
             ))}
         </div>
-        <div className="menu">
-            menu
-        </div>
+        {/* <ChakraProvider>
+            <div className="menu">
+                <div className="images">
+                    <p>images: {imageVal}</p>
+                    <Slider aria-label='slider-ex-2' colorScheme='grey' defaultValue={0} onChange={(val)=> setImageVal(val)}>
+                        <SliderTrack>
+                            <SliderFilledTrack />
+                        </SliderTrack>
+                        <SliderThumb />
+                    </Slider>
+                </div>
+                <div className="steps">
+                    <p>Steps: {steps}</p>
+                    <Slider aria-label='slider-ex-2' colorScheme='grey' defaultValue={0} onChange={(val)=> setSteps(val)}>
+                        <SliderTrack>
+                            <SliderFilledTrack />
+                        </SliderTrack>
+                        <SliderThumb />
+                    </Slider>
+                </div>
+                <div className="guidance_scale">
+                    <p>Guidance Scale: {scale}</p>
+                    <Slider aria-label='slider-ex-2' colorScheme='grey' defaultValue={0} onChange={(val)=> setScale(val)}>
+                        <SliderTrack>
+                            <SliderFilledTrack />
+                        </SliderTrack>
+                        <SliderThumb />
+                    </Slider>
+                </div>
+
+                <div className="seed">
+                    <p>seed: {seed}</p>
+                    <Slider aria-label='slider-ex-2' colorScheme='grey' defaultValue={0} onChange={(val)=> setSeed(val)}>
+                        <SliderTrack>
+                            <SliderFilledTrack />
+                        </SliderTrack>
+                        <SliderThumb />
+                    </Slider>                
+                </div>
+
+            </div>
+        </ChakraProvider> */}
+    <Slider
+      value={imageVal}
+      onChange={(val)=>setImageVal(val)}
+      defaultValue={30}
+      step={10}
+    
+      min={0}
+      max={100}
+    />
+
         
     </div>
     <div className="result">
