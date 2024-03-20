@@ -7,8 +7,8 @@ import { Link } from 'react-router-dom'
 const PageTwo = () => {
 
   const [promt,setPrompt] = useState()
-  const [imgData,setImgData] = useState()
-  const [img,setimg] = useState()
+
+  const [imgSrc,setimgSrc] = useState()
   const genImg = async()=>{
     try {
       const response = await axios.post("http://127.0.0.1:8000/generate-image/",{
@@ -20,7 +20,17 @@ const PageTwo = () => {
   
       })
       console.log(response)
-      setImgData(response.data)
+      
+      if(response.data.status==="successful"){
+          try {
+            const blob = await axios.get("http://127.0.0.1:8000/get-image/",{responseType:"blob"})
+      
+            setimgSrc(URL.createObjectURL(blob))
+            fileDownload(blob, "generatedImge.jpg");
+          } catch (error) {
+            console.log(error);
+          }
+      } 
     } catch (error) {
       console.log(error)
     }
@@ -43,7 +53,7 @@ const PageTwo = () => {
   //   "use_add": true
   // }
 
-  const testUrl = "http://127.0.0.1:8000/generate-image/"
+  // const testUrl = "http://127.0.0.1:8000/generate-image/"
   
   // fileDownload(testUrl,"testImage")
 
@@ -80,15 +90,13 @@ const PageTwo = () => {
             placeholder="Customize your clothes"
             onChange={(e) => setPrompt(e.target.value)}
           />
-          <button className="generate">Generate Image</button>
+          <button className="generate" onClick={genImg()}>Generate Image</button>
         </div>
 
         <div className="result_download">
-          <img src={img} alt="Generated Image" />
+          <img src={imgSrc} alt="Generated Image" />
           <button className="download">Download</button>
         </div>
-        <button >download</button>
-        <img src={img} alt="generatedImage" />
     </div>
     </>
   )
