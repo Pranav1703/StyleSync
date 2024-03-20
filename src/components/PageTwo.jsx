@@ -6,13 +6,13 @@ import { Link } from 'react-router-dom'
 
 const PageTwo = () => {
 
-  const [promt,setPrompt] = useState()
+  const [prompt,setPrompt] = useState()
 
   const [imgSrc,setimgSrc] = useState()
   const genImg = async()=>{
     try {
       const response = await axios.post("http://127.0.0.1:8000/generate-image/",{
-        "prompt": "generate an image of tshirt with military design, kept on a white background",
+        "prompt": prompt,
         "negative": "poorly Rendered face, poorly drawn face, poor facial details, poorly drawn hands, poorly rendered hands, low resolution, blurry image, oversaturated, bad anatomy, signature, watermark, username, error, missing limbs, error, out of frame, extra fingers, mutated hands, poorly drawn hands, malformed limbs, missing arms, missing legs, extra arms, extra legs, fused fingers, too many fingers, long neck, username",
         "width": 1024,
         "height": 1024,
@@ -23,10 +23,11 @@ const PageTwo = () => {
       
       if(response.data.status==="successful"){
           try {
-            const blob = await axios.get("http://127.0.0.1:8000/get-image/",{responseType:"blob"})
-      
-            setimgSrc(URL.createObjectURL(blob))
-            fileDownload(blob, "generatedImge.jpg");
+            const res = await axios.get("http://127.0.0.1:8000/get-image/")
+            console.log(res);
+            
+            setimgSrc(res.data.static_file_url);
+            // fileDownload(res.data, "generatedImge.jpg");
           } catch (error) {
             console.log(error);
           }
@@ -34,6 +35,15 @@ const PageTwo = () => {
     } catch (error) {
       console.log(error)
     }
+    // try {
+    //   const res = await axios.get("http://127.0.0.1:8000/get-image/")
+    //   console.log(res);
+      
+    //   setimgSrc(res.data.static_file_url);
+    //   // fileDownload(res.data, "generatedImge.jpg");
+    // } catch (error) {
+    //   console.log(error);
+    // }
     
   }
 
@@ -90,7 +100,7 @@ const PageTwo = () => {
             placeholder="Customize your clothes"
             onChange={(e) => setPrompt(e.target.value)}
           />
-          <button className="generate" onClick={genImg()}>Generate Image</button>
+          <button className="generate" onClick={()=>genImg()}>Generate Image</button>
         </div>
 
         <div className="result_download">
