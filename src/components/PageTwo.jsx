@@ -69,6 +69,7 @@ const PageTwo = () => {
         </div>
       </div>
       <div className="pageTwo">
+        <div className="pagetwo_heading">Generate your Garment</div>
         <div className="input">
           <input
             type="text"
