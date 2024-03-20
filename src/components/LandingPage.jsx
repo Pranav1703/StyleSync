@@ -4,52 +4,16 @@ import "../styles/style.css"
 import img1 from "../assests/black_girl.jpg"
 import koreanjpg from "../assests/korean.jpg"
 import man3 from "../assests/man_3-removebg-preview.png"
+import { useState} from 'react'
 
 const LandingPage = () => {
   
-    const boxes = document.querySelectorAll(".box");
+  const [formData,setFormData] = useState({})
 
-window.addEventListener("scroll", checkBoxes);
+  const submitHandler = ()=>{
+    
+  }
 
-checkBoxes();
-
-function checkBoxes() {
-  const triggerBottom = (window.innerHeight / 5) * 4;
-
-  boxes.forEach((box) => {
-    const boxTop = box.getBoundingClientRect().top;
-
-    if (boxTop < triggerBottom) {
-      box.classList.add("show");
-    } else {
-      box.classList.remove("show");
-    }
-  });
-}
-
-// var tablinks = document.getElementsByClassName("tab-links");
-// var tabcontents = document.getElementsByClassName("tab-contents");
-
-// function opentab(event,tabname) {
-//     tablinks.forEach((tablink) => {
-//         tablink.classList.remove("active-link");
-//       });
-//       tabcontents.forEach((tabcontent) => {
-//         tabcontent.classList.remove("active-tab");
-//       });
-//   event.currentTarget.classList.add("active-link");
-//   document.getElementById(tabname).classList.add("active-tab");
-// }
-
-// var sidemenu = document.getElementById("sidemenu");
-
-// function openmenu() {
-//   sidemenu.style.right = "0";
-// }
-
-// function closemenu() {
-//   sidemenu.style.right = "-200px";
-// }
 
 // //code for getting the contact detail in google form
 // // const scriptURL =
@@ -115,7 +79,7 @@ function checkBoxes() {
 
     </div>
 
-    <div className="main_page_2">
+    <div className="main_page_2" >
         <div className="box-1">
             <div className="box">
                 <div className="card_1">
@@ -128,7 +92,7 @@ function checkBoxes() {
 
             <div class="box">
                 
-                <div className="card_2" >
+                <div className="card_2"  >
                     <img src={koreanjpg} alt=""/>
                     <div className="card_1_des">Wearable Style Integration</div>
                     <div className="try"><Link to="/pageTwo">Try Now</Link></div>
@@ -137,6 +101,26 @@ function checkBoxes() {
             </div>
         </div>
     </div>
+
+    <div class="footer">
+        <div class="footer_left">
+            <form name="submit-to-google-sheet">
+                <input type="text" name="Name" placeholder="Your Name" required onChange={changeHandler}/>
+                <input type="email" name="Email" placeholder="Your Email" required />
+                <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                <button type="submit" class="btn btn2">Submit</button>
+            </form>
+        </div>
+        <div class="footer_right">
+            <div class="footer_heading">Style Sync</div>
+            <div class="footer_text">
+                Style Sync redefines the fashion experience, seamlessly replacing virtual garments with your current
+                attire. <br/>You can also get your attire by your imagination. You can give it the prompt and it generate
+                the garment and fit to you body.
+            </div>
+        </div>
+    </div>
+
     </>
   )
 }
