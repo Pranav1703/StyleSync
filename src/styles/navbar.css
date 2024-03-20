@@ -1,12 +1,34 @@
-.NavBar{
-    font-size: larger;
-    display: flex;
-    flex-direction: row;
-    border: 2px solid;
-    height: 70px;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  color: black;
+  height: 50px;
+  align-items: center;
 }
 
-.NavBar>h3{
-    margin: 10px;
-    padding-top: 10px;
+.nav_left {
+  font-family: "Dancing Script", cursive;
+  font-weight: bold;
+  font-size: 30px;
+  padding-left: 20px;
+}
+
+.nav_middle {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+}
+
+.nav_right {
+  font-family: "Poppins", sans-serif;
+  padding-right: 20px;
+  font-size: 18px;
+}
+
+.home a {
+  color: black;
+  text-decoration: none;
 }

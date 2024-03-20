@@ -1,0 +1,36 @@
+.main_page {
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+}
+
+.style_heading {
+  font-size: 100px;
+  font-family: "Poppins", sans-serif;
+  padding-right: 70px;
+}
+
+.style {
+  font-weight: bold;
+}
+
+.main_right img {
+  height: 550px;
+}
+
+.fashion {
+  font-family: "Dancing Script", cursive;
+  font-size: 120px;
+}
+
+.style_para {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  padding: 30px;
+}
+
+.main_left {
+  padding-left: 40px;
+}

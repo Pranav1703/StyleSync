@@ -1,7 +1,8 @@
 import React from 'react'
-import "../styles/main.css"
+import "../styles/page1.css"
 import { useState } from 'react';
 import Card from './Card';
+import Result from './Result';
 // import { ChakraProvider } from '@chakra-ui/react';
 // import {
 //     Slider,
@@ -11,8 +12,6 @@ import Card from './Card';
 //   } from '@chakra-ui/react'
 
 import Slider from '@mui/material/Slider';
-
-
 
 
 
@@ -72,82 +71,81 @@ const Main = () => {
 
   return (
     
-    <>
-    <div className='main'>
-        <div className="imageUpload">
-            <div className="preview">
-                
-                {
-                    file?
-                    (
-                        <img src={file} alt="previewImg" />
-                    ):
-                    (
-                        <h3>Upload your image</h3>
-                    )
-                }
+    <div className='container'>
+        <div className='main'>
+            <div className="imageUpload">
+                <div className="preview">
+                    
+                    {
+                        file?
+                        (
+                            <img src={file} alt="previewImg" />
+                        ):
+                        (
+                            <h3>Upload your image</h3>
+                        )
+                    }
+                </div>
+                <input type="file" id="imgUpload" onChange={fileChangeHandler}/>
             </div>
-            <input type="file" id="imgUpload" onChange={fileChangeHandler}/>
+            <div className="clothes">
+                {clothes.map((i)=>(
+                    <a href={i.imgsrc}>
+                    <Card key={i.id} name={i.name} imgsrc={i.imgsrc}/>
+                    </a>
+                ))}
+            </div>
+                
+            <div className="menu">
+                    <div className="images">
+                        <p>images: {imageVal}</p>
+                        <Slider
+                            value={imageVal}
+                            onChange={(e,val)=>setImageVal(val)}
+                            defaultValue={30}
+                            min={0}
+                            max={100}
+                        />
+                    </div>
+                    <div className="steps">
+                        <p>Steps: {steps}</p>
+                        <Slider
+                            value={steps}
+                            onChange={(e,val)=>setSteps(val)}
+                            defaultValue={30}
+                            min={0}
+                            max={100}
+                        />
+                    </div>
+                    <div className="guidance_scale">
+                        <p>Guidance Scale: {scale}</p>
+                        <Slider
+                            value={scale}
+                            onChange={(e,val)=>setScale(val)}
+                            defaultValue={30}
+                            min={0}
+                            max={100}
+                        />
+                    </div>
+                
+                    <div className="seed">
+                        <p>seed: {seed}</p>
+                        <Slider
+                            value={seed}
+                            onChange={(e,val)=>setSeed(val)}
+                            defaultValue={30}
+                            min={0}
+                            max={100}
+                        />
+    
+                    </div>
+            </div>
+                
         </div>
-        <div className="clothes">
-            {clothes.map((i)=>(
-                <a href={i.imgsrc}>
-                <Card key={i.id} name={i.name} imgsrc={i.imgsrc}/>
-                </a>
-            ))}
-        </div>
-
-        <div className="menu">
-                <div className="images">
-                    <p>images: {imageVal}</p>
-                    <Slider
-                        value={imageVal}
-                        onChange={(e,val)=>setImageVal(val)}
-                        defaultValue={30}
-                        min={0}
-                        max={100}
-                    />
-                </div>
-                <div className="steps">
-                    <p>Steps: {steps}</p>
-                    <Slider
-                        value={steps}
-                        onChange={(e,val)=>setSteps(val)}
-                        defaultValue={30}
-                        min={0}
-                        max={100}
-                    />
-                </div>
-                <div className="guidance_scale">
-                    <p>Guidance Scale: {scale}</p>
-                    <Slider
-                        value={scale}
-                        onChange={(e,val)=>setScale(val)}
-                        defaultValue={30}
-                        min={0}
-                        max={100}
-                    />
-                </div>
-
-                <div className="seed">
-                    <p>seed: {seed}</p>
-                    <Slider
-                        value={seed}
-                        onChange={(e,val)=>setSeed(val)}
-                        defaultValue={30}
-                        min={0}
-                        max={100}
-                    />
-
-                </div>
-        </div>
+                
+        <Result src={file}/>
     
     </div>
-    
-    <div className="result">
-        <img src={file} alt="result img" id='resultImg'/>
-    </div>
-    </>
     
   )
 }
