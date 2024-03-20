@@ -1,0 +1,12 @@
+.NavBar{
+    font-size: larger;
+    display: flex;
+    flex-direction: row;
+    border: 2px solid;
+    height: 70px;
+}
+
+.NavBar>h3{
+    margin: 10px;
+    padding-top: 10px;
+}
