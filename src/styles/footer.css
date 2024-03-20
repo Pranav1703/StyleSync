@@ -1,0 +1,30 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 150px;
+    padding-left: 100px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+  }
+  
+  .footer_right {
+    color: white;
+  }
+  
+  .footer_heading {
+    font-family: "Dancing Script", cursive;
+    font-size: 50px;
+  }
+  
+  .footer_text {
+    font-family: "Poppins", sans-serif;
+    padding-top: 20px;
+  }
+  
+  .footer_bottom {
+    font-family: "Poppins", sans-serif;
+    /* font-weight: bold; */
+    font-size: 27px;
+    padding-top: 20px;
+    color: rgb(90, 255, 90);
+  }

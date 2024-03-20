@@ -1,5 +1,5 @@
 import React from 'react'
-import "../styles/page1.css"
+import "../styles/pageOne.css"
 import { useState } from 'react';
 import Card from './Card';
 import Result from './Result';
@@ -15,7 +15,7 @@ import Slider from '@mui/material/Slider';
 
 
 
-const Main = () => {
+const PageOne = () => {
 
   const [file, setFile] = useState();
 //   const [clothes,setClothes] = useState()
@@ -150,4 +150,4 @@ const Main = () => {
   )
 }
 
-export default Main
+export default PageOne

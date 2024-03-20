@@ -1,8 +1,8 @@
 import './App.css';
 import LandingPage from './components/LandingPage';
-import Main from './components/Main';
-
-import { BrowserRouter as Router , Routes , Route , Link} from 'react-router-dom';
+import PageOne from "./components/PageOne"
+import PageTwo from './components/PageTwo';
+import { BrowserRouter as Router , Routes , Route } from 'react-router-dom';
 
 
 function App() {
@@ -12,8 +12,9 @@ function App() {
       <Router>
         
         <Routes>
-          <Route path='/' Component={LandingPage}/>
-          <Route path='/pageOne' Component={Main}/>
+          <Route path='/' element={<LandingPage/>}/>
+          <Route path='/pageOne' element={<PageOne/>}/>
+          <Route path='pageTwo' element={<PageTwo/>}/>
         </Routes>
 
       </Router>
