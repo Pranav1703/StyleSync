@@ -72,6 +72,27 @@ const PageOne = () => {
   return (
     
     <div className='container'>
+        <div className="navbar">
+        <div className="nav_left">
+          <div className="logo"></div>
+          <div className="logo_text">StyleSync</div>
+        </div>
+        <div className="nav_middle">
+          <div className="home">
+            <a href="#home">Home</a>
+          </div>
+          <div className="home">
+            <a href="#about">About</a>
+          </div>
+          <div className="home">
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+        <div className="nav_right">
+          <div className="sign">Sign in</div>
+        </div>
+        </div>
+        <h3 className="page_2_heading">Try on what suits you best !!</h3>
         <div className='main'>
             <div className="imageUpload">
                 <div className="preview">

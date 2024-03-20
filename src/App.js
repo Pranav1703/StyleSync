@@ -14,7 +14,7 @@ function App() {
         <Routes>
           <Route path='/' element={<LandingPage/>}/>
           <Route path='/pageOne' element={<PageOne/>}/>
-          <Route path='pageTwo' element={<PageTwo/>}/>
+          <Route path='/pageTwo' element={<PageTwo/>}/>
         </Routes>
 
       </Router>
