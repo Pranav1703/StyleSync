@@ -1,0 +1,6 @@
+git+https://github.com/kashif/diffusers.git@wuerstchen-v3
+diffusers
+torch
+gradio
+pillow
+transformers
