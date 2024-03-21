@@ -1,5 +1,12 @@
 # StyleSync
 
+## To start this project:
+```
+cd StyleSync
+npm i
+npm start
+```
+
 # What makes us different
 1. One of its kind: We use advanced diffusion models for hyper-realistic virtual try-on experiences.
 2. Unmatched realism: The fine-tuned diffusion model delivers lifelike images, unlike typical AR/VR methods. [model release date: 4 March 2024]
