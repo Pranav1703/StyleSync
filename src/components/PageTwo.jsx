@@ -1,38 +1,77 @@
-import React, { useState } from "react";
-import axios from "axios";
-import "../styles/pageTwo.css";
-import fileDownload from "js-file-download";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react'
+import axios from 'axios'
+import "../styles/pageTwo.css"
+import fileDownload from 'js-file-download'
+import { Link } from 'react-router-dom'
 
 const PageTwo = () => {
-  const [promt, setPrompt] = useState();
-  const [imgData, setImgData] = useState();
-  const [img, setimg] = useState();
-  // const genImg = async()=>{
-  //   try {
-  //     const response = await axios.post("http://127.0.0.1:8000/generate-image/",{
-  //       "prompt": "generate an image of tshirt with military design, kept on a white background",
-  //       "negative": "poorly Rendered face, poorly drawn face, poor facial details, poorly drawn hands, poorly rendered hands, low resolution, blurry image, oversaturated, bad anatomy, signature, watermark, username, error, missing limbs, error, out of frame, extra fingers, mutated hands, poorly drawn hands, malformed limbs, missing arms, missing legs, extra arms, extra legs, fused fingers, too many fingers, long neck, username",
-  //       "width": 1024,
-  //       "height": 1024,
-  //       "use_add": true
 
-  //     })
-  //     console.log(response)
-  //     setImgData(response.data)
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
+  const [prompt,setPrompt] = useState()
 
-  // }
+  const [imgSrc,setimgSrc] = useState()
+  const genImg = async()=>{
+    try {
+      const response = await axios.post("http://127.0.0.1:8000/generate-image/",{
+        "prompt": prompt,
+        "negative": "poorly Rendered face, poorly drawn face, poor facial details, poorly drawn hands, poorly rendered hands, low resolution, blurry image, oversaturated, bad anatomy, signature, watermark, username, error, missing limbs, error, out of frame, extra fingers, mutated hands, poorly drawn hands, malformed limbs, missing arms, missing legs, extra arms, extra legs, fused fingers, too many fingers, long neck, username",
+        "width": 1024,
+        "height": 1024,
+        "use_add": true    
+  
+      })
+      console.log(response)
+      
+      if(response.data.status==="successful"){
+          try {
+            const res = await axios.get("http://127.0.0.1:8000/get-image/")
+            console.log(res);
+            
+            setimgSrc(res.data.static_file_url);
+            // fileDownload(res.data, "generatedImge.jpg");
+          } catch (error) {
+            console.log(error);
+          }
+      } 
+    } catch (error) {
+      console.log(error)
+    }
 
-  // const downloadFile = (url, filename) => {
-  //   axios.get(url, {
-  //     responseType: 'blob',
-  //   }).then(res => {
-  //     fileDownload(res.data, filename);
-  //   });
-  // }
+    
+    // try {
+    //   const res = await axios.get("http://127.0.0.1:8000/get-image/")
+    //   console.log(res);
+      
+    //   setimgSrc(res.data.static_file_url);
+    //   // fileDownload(res.data, "generatedImge.jpg");
+    // } catch (error) {
+    //   console.log(error);
+    // }
+    
+  }
+
+  const downloadImage= async(uri, name) => {
+
+    fetch(uri)
+      .then((response) => response.blob())
+      .then((blob) => {
+        const url = window.URL.createObjectURL(new Blob([blob]));
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = name || "downloaded-file";
+        document.body.appendChild(link);
+
+        link.click();
+
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+      })
+      .catch((error) => {
+        console.error("Error fetching the file:", error);
+      });
+
+  }
+
+
 
   // {
   //   "prompt": "generate an image of tshirt with military design, kept on a white background",
@@ -42,8 +81,8 @@ const PageTwo = () => {
   //   "use_add": true
   // }
 
-  const testUrl = "http://127.0.0.1:8000/generate-image/";
-
+  // const testUrl = "http://127.0.0.1:8000/generate-image/"
+  
   // fileDownload(testUrl,"testImage")
 
   return (
@@ -78,16 +117,18 @@ const PageTwo = () => {
             placeholder="Customize your clothes"
             onChange={(e) => setPrompt(e.target.value)}
           />
-          <button className="generate">Generate Image</button>
+          <button className="generate" onClick={()=>genImg()}>Generate Image</button>
         </div>
 
         <div className="result_download">
-          <img src={img} alt="Generated Image" />
-          <button className="download">Download</button>
+          {
+            imgSrc && <img src={imgSrc} alt="Generated Image" />
+          }
+          <button className="download" onClick={()=>downloadImage("http://127.0.0.1:8000/get-image/")}>Download</button>
         </div>
-      </div>
+    </div>
     </>
-  );
-};
+  )
+}
 
 export default PageTwo;
