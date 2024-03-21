@@ -1,3 +1,11 @@
+# To start the project:
+'''
+cd StyleSync
+npm i
+npm start
+'''
+
+
 # StyleSync
 
 # What makes us different
