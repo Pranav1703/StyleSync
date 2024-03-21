@@ -28,7 +28,7 @@ const PageTwo = () => {
             console.log(res);
             
             setimgSrc(res.data.static_file_url);
-            // fileDownload(res.data, "generatedImge.jpg");
+
           } catch (error) {
             console.log(error);
           }
