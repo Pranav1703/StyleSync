@@ -10,6 +10,7 @@ const PageTwo = () => {
 
   const [imgSrc,setimgSrc] = useState()
   const genImg = async()=>{
+    setimgSrc("")
     try {
       const response = await axios.post("http://127.0.0.1:8000/generate-image/",{
         "prompt": prompt,
@@ -124,7 +125,7 @@ const PageTwo = () => {
           {
             imgSrc && <img src={imgSrc} alt="Generated Image" />
           }
-          <button className="download" onClick={()=>downloadImage("http://127.0.0.1:8000/get-image/")}>Download</button>
+          <button className="download" onClick={()=>downloadImage("http://127.0.0.1:8000/get-image/","generated-image.jpeg")}>Download</button>
         </div>
     </div>
     </>
