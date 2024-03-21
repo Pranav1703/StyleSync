@@ -30,7 +30,7 @@
 
   4. Social Media: Create engaging content by showcasing different outfits on virtual models, increasing audience interaction. [for companies]
 
-# Future Aims
+# Aims
 
 1. Integration and Deployment on Cloud Platforms for public use-case.
 
