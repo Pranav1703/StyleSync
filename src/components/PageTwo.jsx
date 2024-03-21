@@ -57,7 +57,7 @@ const PageTwo = () => {
         const url = window.URL.createObjectURL(new Blob([blob]));
         const link = document.createElement("a");
         link.href = url;
-        link.download = name || "downloaded-file";
+        link.download = name || "downloaded-file.jpeg";
         document.body.appendChild(link);
 
         link.click();
