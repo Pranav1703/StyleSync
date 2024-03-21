@@ -35,6 +35,8 @@ const PageTwo = () => {
     } catch (error) {
       console.log(error)
     }
+
+    
     // try {
     //   const res = await axios.get("http://127.0.0.1:8000/get-image/")
     //   console.log(res);
@@ -47,13 +49,29 @@ const PageTwo = () => {
     
   }
 
-  // const downloadFile = (url, filename) => {
-  //   axios.get(url, {
-  //     responseType: 'blob',
-  //   }).then(res => {
-  //     fileDownload(res.data, filename);
-  //   });
-  // }
+  const downloadImage= async(uri, name) => {
+
+    fetch(uri)
+      .then((response) => response.blob())
+      .then((blob) => {
+        const url = window.URL.createObjectURL(new Blob([blob]));
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = name || "downloaded-file";
+        document.body.appendChild(link);
+
+        link.click();
+
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+      })
+      .catch((error) => {
+        console.error("Error fetching the file:", error);
+      });
+
+  }
+
+
 
   // {
   //   "prompt": "generate an image of tshirt with military design, kept on a white background",
@@ -104,8 +122,10 @@ const PageTwo = () => {
         </div>
 
         <div className="result_download">
-          <img src={imgSrc} alt="Generated Image" />
-          <button className="download">Download</button>
+          {
+            imgSrc && <img src={imgSrc} alt="Generated Image" />
+          }
+          <button className="download" onClick={()=>downloadImage("http://127.0.0.1:8000/get-image/")}>Download</button>
         </div>
     </div>
     </>

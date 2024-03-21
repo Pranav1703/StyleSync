@@ -27,6 +27,8 @@ const PageOne = () => {
     setFile(URL.createObjectURL(e.target.files[0]));
   }
 
+  
+
   const clothes = [
     {
       imgsrc:
@@ -113,7 +115,7 @@ const PageOne = () => {
             </a>
           ))}
         </div>
-
+        <button >RUN</button>
         <div className="menu">
           <div className="images">
             <p>images: {imageVal}</p>
