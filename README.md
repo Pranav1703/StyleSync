@@ -8,7 +8,30 @@
 5. The Next Application in the Fashion Industry: We believe that the diffusion models are very soon going to overtake the AR/VR techniques for virtual try-ons in the e-commerce stores.
 
  # Technical Stack
+![5](https://github.com/Pranav1703/StyleSync/assets/121372231/cd98f452-b5dd-44ff-ad57-640cb2ea6230)
 
 # AR - VR
 ![imgonline-com-ua-twotoone-rskzH8wrHwGkSM](https://github.com/Pranav1703/StyleSync/assets/121372231/b572bc35-f8e3-488c-a448-8d1b1478457c)
 
+# Diffusion Modal
+![8](https://github.com/Pranav1703/StyleSync/assets/121372231/a5e3d9e7-e970-41b4-bddb-556dcf1bd140)
+
+![9](https://github.com/Pranav1703/StyleSync/assets/121372231/86d0c0bf-106c-495d-b801-e522458578c7)
+
+![10](https://github.com/Pranav1703/StyleSync/assets/121372231/dafd05b3-52b3-44ac-8241-6443bec814de)
+
+# Use Cases
+
+  1. E-commerce: Enhance online shopping by letting customers virtually try on clothes before purchasing.
+
+  2. Fashion Design: Visualize designs on virtual models, aiding in the design process and client presentations.
+
+  3. Custom Tailoring: Offer virtual fittings to clients, enabling them to see customized garments before production.
+
+  4. Social Media: Create engaging content by showcasing different outfits on virtual models, increasing audience interaction. [for companies]
+
+# Future Aims
+
+1. Integration and Deployment on Cloud Platforms for public use-case.
+
+2. Identification of Edge cases, hyperparameters as per use cases and improvements in the product architecture.
