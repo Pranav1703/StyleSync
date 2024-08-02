@@ -1,4 +1,5 @@
 # StyleSync
+Team members: Pradyumna, Ahmed, Khushi, Pranav
 
 ## To start this project:
 ```
